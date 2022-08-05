@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.zxbro.store.keeper.infrastructure.event.mapper.EventMapper">
+    <sql id="columns">
+        tenant_id,event_no,event_type,event_title,event_content,event_level,event_state,event_end_date,version,created_by,created_time,updated_by,updated_time
+    </sql>
+
+    <select id="selectByEventNo" resultType="org.zxbro.store.keeper.infrastructure.event.mapper.model.EventPO">
+        select event_id,<include refid="columns"/>
+        from event
+        where tenant_id = #{tenantId} and event_no = #{eventNo}
+    </select>
+
+    <insert id="insert">
+        insert into event(<include refid="columns"></include>)
+        values(
+        #{tenantId}, #{eventNo}, #{eventType}, #{eventTitle}, #{eventContent},
+        #{eventLevel},#{eventState}, #{eventEndDate},
+        #{version}, #{createdBy}, #{createdTime}, #{updatedBy}, #{updatedTime}
+        )
+    </insert>
+    <delete id="deleteByEventNo">
+        delete from event
+        where tenant_id = #{tenantId} and event_no = #{eventNo}
+    </delete>
+</mapper>

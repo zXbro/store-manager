@@ -1,0 +1,8 @@
+
+spring:
+  datasource:
+    password: yaya5211314
+imgurl:
+  url: https://www.imgurl.org/api/v2/upload
+  uid: 92a1700e7224b0e1f7d2c998191941e1
+  token: 6492876deb05da261533c6fbd3701a2d
